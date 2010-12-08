@@ -1,0 +1,128 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<p><strong><?php echo $this->__('Thank you for your purchase!') ?></strong></p>
+
+<?php if ($this->getOrderId()):?>
+<?php if ($this->getCanViewOrder()) :?>
+    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php  else :?>
+    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?>.</p>
+<?php endif;?>
+    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+<?php if ($this->getViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul>
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<!-- Meanbee OrderShare -->
+<?php if ($this->getOrderId()):?>
+    <div class="ordershare">
+        <h2>Why not share your purchase to twitter or facebook?</h2>
+        <?php $order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId()); ?>
+        <?php foreach ( $order->getAllItems() as $item ) : ?>
+            <?php $_product = Mage::getModel('catalog/product')->load($item->getProductId()); ?>
+            <?php
+                if (!$_product->isVisibleInSiteVisibility()) {
+                    continue;
+              }   
+            ?>
+            <?php $_helper = $this->helper('catalog/output'); ?>
+            <?php $_twitter_user = trim(Mage::getStoreConfig('ordershare/twitter/username')); ?>
+            <?php $_twitter_text = "I just bought a " . $_product->getName(); ?>
+            <?php $_twitter_url = "http://twitter.com/share?text=" . 
+                                    urlencode ( $_twitter_text . 
+                                        " from " . Mage::getStoreConfig('general/store_information/name'))
+                                    . "&url=" . $_product->getProductUrl(); ?>
+            <?php if ($_twitter_user != "") : ?>
+                <?php $_twitter_url .=  "&via=" . $_twitter_user ?>
+            <?php endif; ?>
+
+            <?php $_facebook_url = "http://facebook.com/sharer.php?u=" . 
+                                    rawurlencode($_product->getProductUrl()) . '&t=' . 
+                                    rawurlencode(Mage::getStoreConfig('general/store_information/name') . 
+                                    ' | ' . $_product->getName()); ?>
+                                    
+            <div class="product">
+                <h3><?php echo $_product->getName() ?></h3>
+                <?php if ($_product->getImage()) :?>
+                    <?php $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(150).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />'; 
+                        echo $_helper->productAttribute($_product, $_img, 'image'); ?>
+                <?php endif; ?>
+                <?php if (Mage::getStoreConfig('ordershare/design/style') == 0) : ?>
+                    <div class="share">
+                    <div class="twitter">
+                       <a href="http://twitter.com/share" class="twitter-share-button"
+                           data-url="<?php echo $_product->getProductUrl() ?>"
+                           <?php if ($_twitter_user != "") : ?>
+                               data-via="<?php echo $_twitter_user ?>"
+                           <?php endif; ?>
+                           data-text="<?php echo $_twitter_text ?> <?php echo $this->__('from') ?> <?php echo Mage::getStoreConfig('general/store_information/name') ?>"
+                          data-count="vertical">Tweet</a>
+                    </div>
+                    <div class="facebook">
+                        <a name="fb_share" type="box_count" share_url="<?php echo $_product->getProductUrl() ?>"></a></li>
+                    </div>
+                    </div>
+                    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+                    <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+                <?php else: ?>
+                    <ul>
+                        <li class="twitter"><a target="_blank" href="<?php echo $_twitter_url; ?>">t</a></li>
+                        <li class="facebook"><a target="_blank" href="<?php echo $_facebook_url; ?>">f</a></li>
+                    </ul>
+                <?php endif; ?>
+            
+            
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?> <!-- End Meanbee OrderShare -->
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>

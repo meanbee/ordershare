@@ -1,0 +1,113 @@
+/** CSS for Meanbee Ordershare **/
+
+.ordershare h2 {
+   margin:10px 0 20px;
+}
+
+.ordershare .product {
+   float:left;
+   margin:10px 30px;
+}
+
+.ordershare .product ul {
+   list-style:none;
+   padding:0;
+   margin:20px 0;
+   overflow:hidden;
+   padding-left:20px;
+   font:0.875em/1 Arial, sans-serif;
+}
+
+.ordershare .product ul li {
+   float:left;
+   width:46px;
+   height:46px;
+   margin:0 20px 0 0;
+}
+
+.ordershare .product ul li a {
+   display:block;
+   width:44px;
+   height:44px;
+   overflow:hidden;
+   border:1px solid transparent;
+   line-height:64px;
+   text-decoration:none;
+
+   /* css3 */
+   text-shadow:0 -1px 0 rgba(0,0,0,0.5);
+   -moz-border-radius:5px;
+   -webkit-border-radius:5px;
+   border-radius:5px; /* standards version last */
+}
+
+.ordershare .product ul li a:hover,
+.ordershare .product ul li a:focus,
+.ordershare .product ul li a:active {
+   opacity:0.8;
+   border-color:#000;
+}
+
+.ordershare .product div.share {
+    padding:10px;    
+}
+
+.ordershare .product div.facebook,
+.ordershare .product div.twitter {
+    float:left;
+}
+
+.ordershare .product div.facebook {
+    margin-left:10px;
+}
+
+/* ------------------------------------------------------------------------------------
+--  FACEBOOK
+------------------------------------------------------------------------------------ */
+
+.ordershare .product ul li.facebook a {
+    position:relative;
+    border-color:#3c5a98;
+    text-transform:lowercase;
+    text-indent:25px;
+    letter-spacing:10px;
+    font-weight:bold;
+    font-size:44px;
+    line-height:46px;
+    color:#fff;
+    background:#3c5a98;
+
+    /* css3 */
+    /* NOTE: box-shadow is not currently in any CSS3 module. It may be reappear in a different form altogether */
+    -moz-box-shadow:0 0 4px rgba(0,0,0,0.4);
+    -webkit-box-shadow:0 0 4px rgba(0,0,0,0.4);
+    box-shadow:0 0 4px rgba(0,0,0,0.4); /* standards version last */
+}
+
+/* ------------------------------------------------------------------------------------
+--  TWITTER
+------------------------------------------------------------------------------------ */
+
+.ordershare .product ul li.twitter a {
+    position:relative;
+    border-color:#a8eaec;
+    text-transform:lowercase;
+    text-indent:15px;
+    letter-spacing:40px;
+    font:bold 40px/1 Tahoma, sans-serif;
+    line-height:40px;
+    color:#76DDF8;
+    background:#daf6f7;
+
+    /* css3 */
+    text-shadow: 2px 2px 1px #fff, -2px -2px 1px #fff, 2px -2px 1px #fff, -2px 2px 1px #fff;
+    /* NOTE: box-shadow is not currently in any CSS3 module. It may be reappear in a different form altogether */
+    -moz-box-shadow:0 0 4px rgba(0,0,0,0.4);
+    -webkit-box-shadow:0 0 4px rgba(0,0,0,0.4);
+    box-shadow:0 0 4px rgba(0,0,0,0.4); /* standards version last */
+    /* NOTE: webkit gradient implementation is not as per spec */
+    background:-webkit-gradient(linear, left top, left bottom, from(#dbf7f8), to(#88e1e6));
+    background:-moz-linear-gradient(top, #dbf7f8, #88e1e6);
+    background:linear-gradient(top, #dbf7f8, #88e1e6); /* standards version last */
+}
+

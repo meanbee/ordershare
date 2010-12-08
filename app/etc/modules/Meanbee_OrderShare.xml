@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Meanbee_OrderShare>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Meanbee_OrderShare>
+    </modules>
+</config>
+
