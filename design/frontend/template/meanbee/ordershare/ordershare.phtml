@@ -109,6 +109,29 @@
             
             </div>
         <?php endforeach; ?>
+        <?php if (!$this->isUsingCSS3Icons()): ?>
+            <script type="text/javascript">
+                // Some javascript which will add the count bubble set to 0 if there are no counts.
+                // This looks better than hiding it.
+                Event.observe(window, 'load', function() {  
+                    var fb_share_count_nub_top = $$('.fb_share_count_nub_top');
+                    var fb_share_count = $$('.fb_share_count')
+
+                    fb_share_count_nub_top.each(function(el) {
+                        if (el.hasClassName('fb_share_no_count')) {
+                            el.removeClassName('fb_share_no_count');
+                        }
+                    });
+
+                    fb_share_count.each(function(el) {
+                        if (el.hasClassName('fb_share_no_count')) {
+                            el.removeClassName('fb_share_no_count');   
+                            el.down('.fb_share_count_inner').innerHTML = '0';
+                        }
+                    });
+                });
+            </script>
+        <?php endif;?>
     </div>
     <?php endif; ?> 
     <!-- End Meanbee OrderShare -->
