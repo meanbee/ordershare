@@ -29,7 +29,7 @@
         <layout>
             <updates>
                 <ordershare>
-                        <file>ordershare.xml</file>
+                    <file>meanbee/ordershare.xml</file>
                 </ordershare>
             </updates>
         </layout>
