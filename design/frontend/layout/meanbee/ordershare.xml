@@ -15,7 +15,6 @@
             <action method="addCss"><stylesheet>meanbee/ordershare/css/ordershare.css</stylesheet></action>
         </reference>
         <reference name="content">
-            <!-- TODO replace this with a meanbee block -->
             <block type="ordershare/multishipping_orderShare" name="checkout_ordershare_success" template="meanbee/ordershare/multishipping/ordershare.phtml" />
         </reference>
     </checkout_multishipping_success>
