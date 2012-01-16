@@ -6,7 +6,7 @@
             <action method="addCss"><stylesheet>meanbee/ordershare/css/ordershare.css</stylesheet></action>
         </reference>
         <reference name="content">
-            <block type="ordershare/ordershare" name="meanbee.ordershare" template="meanbee/ordershare/ordershare.phtml"/>
+            <block type="ordershare/orderShare" name="meanbee.ordershare" template="meanbee/ordershare/ordershare.phtml"/>
         </reference>
     </checkout_onepage_success>
     <checkout_multishipping_success>
