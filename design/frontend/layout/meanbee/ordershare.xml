@@ -12,11 +12,11 @@
     <checkout_multishipping_success>
         <remove name="checkout_success" />
         <reference name="head">
-            <action method="addCss"><stylesheet>css/meanbee/ordershare.css</stylesheet></action>
+            <action method="addCss"><stylesheet>meanbee/ordershare/css/ordershare.css</stylesheet></action>
         </reference>
         <reference name="content">
             <!-- TODO replace this with a meanbee block -->
-            <block type="checkout/multishipping_success" name="checkout_ordershare_success" template="checkout/multishipping/ordershare.phtml" />
+            <block type="ordershare/multishipping_orderShare" name="checkout_ordershare_success" template="meanbee/ordershare/multishipping/ordershare.phtml" />
         </reference>
     </checkout_multishipping_success>
 </layout>
