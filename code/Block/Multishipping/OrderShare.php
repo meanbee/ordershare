@@ -1,5 +1,5 @@
 <?php
-class Meanbee_OrderShare_Block_Multishipping_OrderShare extends Mage_Checkout_Block_Multishipping_Success {
+class Meanbee_OrderShare_Block_Multishipping_Ordershare extends Mage_Checkout_Block_Multishipping_Success {
 
     public function getOrder() {
         return Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());    
