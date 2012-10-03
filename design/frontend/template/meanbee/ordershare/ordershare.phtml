@@ -24,6 +24,15 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=446177488757452";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="page-title">
     <h1><?php echo $this->__('Your order has been received') ?></h1>
 </div>
@@ -93,11 +102,11 @@
                           data-count="vertical">Tweet</a>
                     </div>
                     <div class="facebook">
-                        <a name="fb_share" type="box_count" share_url="<?php echo $_product->getProductUrl() ?>"></a></li>
+                        <div class="fb-like" data-href="<?php echo $_product->getProductUrl() ?>" data-layout="box_count" data-send="false" data-width="450" data-show-faces="false"></div>
                     </div>
+
                     </div>
                     <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-                    <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
                 <?php else: ?>
                     <?php $_twitter_url = $this->getTwitterUrl($_twitter_text, $_product) ?>
                     <?php $_facebook_url = $this->getFacebookUrl($_product) ?>
