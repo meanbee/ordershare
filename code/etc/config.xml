@@ -71,5 +71,13 @@
             </resources>
         </acl>
     </adminhtml>
+    
+    <default>
+        <ordershare>
+            <design>
+                <columncount>4</columncount>
+            </design>
+        </ordershare>
+    </default>
 
 </config>

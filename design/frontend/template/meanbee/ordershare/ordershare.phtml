@@ -73,15 +73,22 @@
     <div class="ordershare">
         <h2><?php echo $this->__('Why not share your purchase to twitter or facebook?') ?></h2>
         <?php $order = $this->getOrder(); ?>
-        <?php $_products = $order->getAllVisibleItems() ?>
         
-        <?php foreach ( $_products as $item ) : ?>
+        <?php $_columnCount = $this->getColumnCount(); ?>
+        <?php $_products = $order->getAllVisibleItems() ?>
+        <?php $_collectionSize = count($_products) ?>
+        
+        <?php $i=0; foreach ( $_products as $item ) : ?>
             <?php $_product = $this->getOrderedProduct($item)?>
             <?php $_helper = $this->helper('catalog/output'); ?>
             <?php $_twitter_text = "I just bought a " . $_product->getName(); ?>
             <?php $_twitter_user = $this->getTwitterUser(); ?>
-                                    
-            <div class="product">
+            
+            <?php if ($i++%$_columnCount==0): ?>
+                <ul class="ordershare-products-grid">
+            <?php endif ?>
+                                
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <h3><?php echo $_product->getName() ?></h3>
                 <?php if ($_product->getImage()) :?>
                     <?php $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(150).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />'; 
@@ -112,9 +119,10 @@
                         <li class="facebook"><a target="_blank" href="<?php echo $_facebook_url; ?>">f</a></li>
                     </ul>
                 <?php endif; ?>
-            
-            
-            </div>
+            </li>
+            <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+                </ul>
+            <?php endif ?>
         <?php endforeach; ?>
     </div>
     <?php endif; ?> 

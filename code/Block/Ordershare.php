@@ -33,4 +33,8 @@ class Meanbee_OrderShare_Block_Ordershare extends Mage_Checkout_Block_Onepage_Su
     public function getStoreName() {
         return Mage::getStoreConfig('general/store_information/name');
     }
+
+    public function getColumnCount() {
+        return Mage::getStoreConfig('ordershare/design/columncount');
+    }
 }
