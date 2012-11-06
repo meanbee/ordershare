@@ -4,28 +4,14 @@
    margin:10px 0 20px;
 }
 
-.ordershare .product {
-   float:left;
-   margin:10px 30px;
-}
-
-.ordershare .product ul {
-   list-style:none;
-   padding:0;
-   margin:20px 0;
-   overflow:hidden;
-   padding-left:20px;
-   font:0.875em/1 Arial, sans-serif;
-}
-
-.ordershare .product ul li {
+.ordershare .item ul li {
    float:left;
    width:46px;
    height:46px;
    margin:0 20px 0 0;
 }
 
-.ordershare .product ul li a {
+.ordershare .item ul li a {
    display:block;
    width:44px;
    height:44px;
@@ -41,23 +27,23 @@
    border-radius:5px; /* standards version last */
 }
 
-.ordershare .product ul li a:hover,
-.ordershare .product ul li a:focus,
-.ordershare .product ul li a:active {
+.ordershare .item ul li a:hover,
+.ordershare .item ul li a:focus,
+.ordershare .item ul li a:active {
    opacity:0.8;
    border-color:#000;
 }
 
-.ordershare .product div.share {
+.ordershare .item div.share {
     padding:10px;    
 }
 
-.ordershare .product div.facebook,
-.ordershare .product div.twitter {
+.ordershare .item div.facebook,
+.ordershare .item div.twitter {
     float:left;
 }
 
-.ordershare .product div.facebook {
+.ordershare .item div.facebook {
     margin-left:10px;
 }
 
@@ -65,7 +51,7 @@
 --  FACEBOOK
 ------------------------------------------------------------------------------------ */
 
-.ordershare .product ul li.facebook a {
+.ordershare .item ul li.facebook a {
     position:relative;
     border-color:#3c5a98;
     text-transform:lowercase;
@@ -88,7 +74,7 @@
 --  TWITTER
 ------------------------------------------------------------------------------------ */
 
-.ordershare .product ul li.twitter a {
+.ordershare .item ul li.twitter a {
     position:relative;
     border-color:#a8eaec;
     text-transform:lowercase;
