@@ -73,13 +73,10 @@
     <div class="ordershare">
         <h2><?php echo $this->__('Why not share your purchase to twitter or facebook?') ?></h2>
         <?php $order = $this->getOrder(); ?>
-        <?php foreach ( $order->getAllItems() as $item ) : ?>
+        <?php $_products = $order->getAllVisibleItems() ?>
+        
+        <?php foreach ( $_products as $item ) : ?>
             <?php $_product = $this->getOrderedProduct($item)?>
-            <?php
-                if (!$_product->isVisibleInSiteVisibility()) {
-                    continue;
-              }   
-            ?>
             <?php $_helper = $this->helper('catalog/output'); ?>
             <?php $_twitter_text = "I just bought a " . $_product->getName(); ?>
             <?php $_twitter_user = $this->getTwitterUser(); ?>
