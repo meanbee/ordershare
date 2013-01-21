@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Meanbee_OrderShare>
-            <version>1.1.1</version>
+            <version>1.1.2</version>
         </Meanbee_OrderShare>
     </modules>
 
@@ -35,11 +35,11 @@
         </layout>
         <translate>
             <modules>
-                <ordershare>
+                <Meanbee_OrderShare>
                     <files>
                         <default>Meanbee_Ordershare.csv</default>
                     </files>
-                </ordershare>
+                </Meanbee_OrderShare>
             </modules>
         </translate>
     </frontend>
