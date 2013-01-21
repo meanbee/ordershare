@@ -34,4 +34,8 @@ class Meanbee_OrderShare_Block_Multishipping_Ordershare extends Mage_Checkout_Bl
     public function getStoreName() {
         return Mage::getStoreConfig('general/store_information/name');
     }
+
+    public function getColumnCount() {
+        return Mage::getStoreConfig('ordershare/design/columncount');
+    }
 }
