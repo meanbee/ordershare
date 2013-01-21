@@ -33,6 +33,15 @@
                 </ordershare>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <ordershare>
+                    <files>
+                        <default>Meanbee_Ordershare.csv</default>
+                    </files>
+                </ordershare>
+            </modules>
+        </translate>
     </frontend>
      
     <admin>

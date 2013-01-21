@@ -11,3 +11,5 @@ assets/*                        skin/frontend/base/default/
 ## Misc
 Module.xml                      app/etc/modules/Meanbee_OrderShare.xml
 
+## Locale
+locale/                         app/locale
