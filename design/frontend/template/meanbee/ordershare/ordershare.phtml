@@ -81,7 +81,7 @@
         <?php $i=0; foreach ( $_products as $item ) : ?>
             <?php $_product = $this->getOrderedProduct($item)?>
             <?php $_helper = $this->helper('catalog/output'); ?>
-            <?php $_twitter_text = $this->__("I just bought a %s", $_product->getName()); ?>
+            <?php $_twitter_text = $this->__("I just bought a %s from %s", $_product->getName(), $this->getStoreName()); ?>
             <?php $_twitter_user = $this->getTwitterUser(); ?>
             
             <?php if ($i++%$_columnCount==0): ?>
@@ -104,7 +104,7 @@
                            <?php if ($_twitter_user != "") : ?>
                                data-via="<?php echo $_twitter_user ?>"
                            <?php endif; ?>
-                           data-text="<?php echo $_twitter_text ?> <?php echo $this->__('from') ?> <?php echo $this->getStoreName() ?>"
+                           data-text="<?php echo $_twitter_text ?>"
                           data-count="vertical">Tweet</a>
                     </div>
                     <div class="facebook">
