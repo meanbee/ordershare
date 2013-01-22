@@ -14,7 +14,7 @@ class Meanbee_OrderShare_Block_Ordershare extends Mage_Checkout_Block_Onepage_Su
 
     public function getTwitterUrl($_twitter_text, $_product) {
         $_twitter_user = $this->getTwitterUser();
-        $_twitter_url = "http://twitter.com/share?text=" .  urlencode ( $_twitter_text .  " from " . Mage::getStoreConfig('general/store_information/name')) . "&url=" . $_product->getProductUrl();
+        $_twitter_url = "http://twitter.com/share?text=" .  urlencode ( $_twitter_text ) . "&url=" . $_product->getProductUrl();
         if ($_twitter_user != "") {
             $_twitter_url .=  "&via=" . $_twitter_user;
         }
