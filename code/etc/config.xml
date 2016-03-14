@@ -43,18 +43,6 @@
             </modules>
         </translate>
     </frontend>
-     
-    <admin>
-        <routers>
-            <ordershare>
-            <use>admin</use>
-            <args>
-                <module>Meanbee_OrderShare</module>
-                <frontName>ordershare</frontName>
-            </args>
-        </ordershare>
-        </routers>
-    </admin> 
 
     <adminhtml>
         <acl>
